@@ -1,0 +1,24 @@
+sonarqube {
+    properties {
+        property "sonar.exclusions", "**/*Generated.java"
+        property "sonar.java.spotbugs.reportPaths", "./build/reports/spotbugs_report.xml"
+        property "sonar.java.pmd.reportPaths", "./build/reports/pmd_report.xml"
+        property "sonar.java.checkstyle.reportPaths", "./build/reports/checkstyle_report.xml"
+    }
+}
+
+spotbugs {
+    ignoreFailures = true
+    spotbugsTest.enabled = true
+    showProgress = true
+}
+
+pmd {
+    sourceSets = [ project.sourceSets.main ]
+    pmdMain {
+        excludes = [
+                '**/Application.*',
+                '**/test/**/*.*'
+        ]
+    }
+}

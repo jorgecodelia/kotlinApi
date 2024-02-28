@@ -1,0 +1,19 @@
+
+tasks.named('test') {
+    useJUnitPlatform()
+    jacocoTestReport
+}
+
+pitest {
+    pitestVersion = "${pitestV}"
+    junit5PluginVersion = '1.2.1'
+    targetClasses = ['com.example.kotlin.api.*']
+    excludedClasses = [
+            'com.example.kotlin.api.common.*',
+            'com.example.kotlin.api.repository.*'
+    ]
+    threads = 4
+    outputFormats = ['HTML']
+    coverageThreshold = 60
+    timestampedReports = false
+}
